@@ -24,6 +24,40 @@ class KodePos
         return kodePosTable[kelurahan];
     }
 }
+class DoorMachine
+{
+    enum State
+    {
+        Terkunci,
+        Terbuka
+    }
+
+    private State currentState;
+
+    public DoorMachine()
+    {
+        currentState = State.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+
+    public void bukaPintu()
+    {
+        if (currentState == State.Terkunci)
+        {
+            currentState = State.Terbuka;
+            Console.WriteLine("Pintu tidak terkunci");
+        }
+    }
+
+    public void kunciPintu()
+    {
+        if (currentState == State.Terbuka)
+        {
+            currentState = State.Terkunci;
+            Console.WriteLine("Pintu terkunci");
+        }
+    }
+}
 class Program
 {
     static void Main(string[] args)
@@ -31,6 +65,11 @@ class Program
         KodePos kode = new KodePos();
 
         Console.WriteLine("Kode Pos Batununggal: " + kode.getKodePos("Batununggal"));
+
+        DoorMachine pintu = new DoorMachine();
+
+        pintu.bukaPintu();
+        pintu.kunciPintu();
 
         Console.ReadLine();
     }
